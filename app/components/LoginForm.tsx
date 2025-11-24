@@ -1,3 +1,5 @@
+'use client';
+
 import { useForm } from 'react-hook-form';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
