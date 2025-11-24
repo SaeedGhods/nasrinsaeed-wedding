@@ -12,7 +12,7 @@ type FormData = {
   message: string;
 };
 
-export const RSVPForm = ({ guestId }: { guestId: string }) {
+export const RSVPForm = ({ guestId }: { guestId: string }) => {
   const { register, handleSubmit, control, watch, formState: { errors } } = useForm<FormData>({
     defaultValues: { partySize: 1, guests: [{ name: '', meal: '' }] },
   });

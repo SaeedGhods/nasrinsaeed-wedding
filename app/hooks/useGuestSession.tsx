@@ -21,7 +21,7 @@ export const useGuestSession = () => {
     return { error };
   };
 
-  logout = () => {
+  const logout = () => {
     localStorage.removeItem('guestId');
     setGuestId(null);
   };
