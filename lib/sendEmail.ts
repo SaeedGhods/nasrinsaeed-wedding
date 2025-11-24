@@ -1,8 +1,14 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendApiKey = process.env.RESEND_API_KEY;
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 export async function sendInvitation(email: string, passcode: string, firstName: string) {
+  if (!resend) {
+    console.warn('Resend API key missing. Skipping email send.');
+    return null;
+  }
+
   const html = `
     <div style="background-color: #fdf2f8; padding: 40px; text-align: center; font-family: 'Open Sans', sans-serif; border-radius: 10px; max-width: 600px; margin: auto;">
       <img src="/hero-walking.jpg" alt="Saeed & Nasrin Walking" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;" />
