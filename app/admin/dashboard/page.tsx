@@ -57,7 +57,7 @@ export default function AdminDashboard() {
 
   const exportCSV = async () => {
     const { data: rsvps } = await supabase.from('rsvps').select('*');
-    const csv = Papa.unparse(rsvps);
+    const csv = Papa.unparse(rsvps ?? []);
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
